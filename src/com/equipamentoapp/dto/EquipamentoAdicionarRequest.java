@@ -1,6 +1,8 @@
 package com.equipamentoapp.dto;
 
-public record EquipamentoAdicionarRequest(String nome, int quantidade, double preco, double potencia, String tensao) {
+import com.equipamentoapp.model.enums.TipoEquipamento;
+
+public record EquipamentoAdicionarRequest(TipoEquipamento tipoEquipamento, String nome, int quantidade, double preco, double potencia, String tensao) {
 
 
 }

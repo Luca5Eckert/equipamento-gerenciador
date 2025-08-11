@@ -4,7 +4,7 @@ public class PainelControle extends Equipamento {
 
     private String tensao;
 
-    protected PainelControle(String codigo, double preco, int quantidade, String nome, String tensao) {
+    public PainelControle(String codigo, double preco, int quantidade, String nome, String tensao) {
         super(preco, quantidade, nome, codigo);
         this.tensao = tensao;
     }

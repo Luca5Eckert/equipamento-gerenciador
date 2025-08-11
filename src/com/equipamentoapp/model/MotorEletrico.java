@@ -4,7 +4,7 @@ public class MotorEletrico extends Equipamento {
 
     private double potencia;
 
-    protected MotorEletrico(String codigo, double preco, int quantidade, String nome, double potencia) {
+    public MotorEletrico(String codigo, double preco, int quantidade, String nome, double potencia) {
         super(preco, quantidade, nome, codigo);
         this.potencia = potencia;
     }

@@ -3,6 +3,8 @@ package com.equipamentoapp.service;
 import com.equipamentoapp.dto.EquipamentoAdicionarRequest;
 import com.equipamentoapp.dto.EquipamentoRequest;
 import com.equipamentoapp.dto.EquipamentoResponse;
+import com.equipamentoapp.infra.MapperFactory;
+import com.equipamentoapp.mapper.EquipamentoMapper;
 import com.equipamentoapp.model.Estoque;
 import com.equipamentoapp.model.enums.TipoEquipamento;
 
@@ -18,7 +20,8 @@ public class EstoqueServiceImpl implements EstoqueService {
 
     @Override
     public void cadastrarEquipamento(EquipamentoAdicionarRequest equipamentoDto) {
-
+        EquipamentoMapper<?> equipamentoMapper = MapperFactory.toInstance(equipamentoDto.tipoEquipamento());
+        equipamentoMapper.toEntity(equipamentoDto);
     }
 
     @Override

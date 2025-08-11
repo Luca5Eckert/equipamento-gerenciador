@@ -9,4 +9,6 @@ public class EquipamentoController {
     public EquipamentoController(EstoqueService estoqueService){
         this.estoqueService = estoqueService;
     }
+
+
 }

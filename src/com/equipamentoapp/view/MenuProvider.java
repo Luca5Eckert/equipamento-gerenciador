@@ -14,9 +14,13 @@ public class MenuProvider {
     }
 
     public void iniciarFluxo(){
-        menu.chamarMenu(leitor);
-        menu.executarAcao();
-        menu = menu.proximoMenu();
+        try {
+            menu.chamarMenu(leitor);
+            menu.executarAcao();
+            menu = menu.proximoMenu();
+        } catch ( RuntimeException runtimeException){
+            System.out.println(runtimeException.getMessage());
+        }
     }
 
     public boolean verificarContinuedade(){

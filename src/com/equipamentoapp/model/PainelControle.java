@@ -11,7 +11,12 @@ public class PainelControle extends Equipamento {
         this.tensao = tensao;
     }
 
-
+    @Override
+    public String toString() {
+        String string = super.toString();
+        string = string + "\nTensão: " + tensao;
+        return string;
+    }
 
     public String getTensao() {
         return tensao;

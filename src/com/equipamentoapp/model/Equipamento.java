@@ -19,6 +19,15 @@ public abstract class Equipamento {
 
     public abstract TipoEquipamento pegarTipo();
 
+    @Override
+    public String toString() {
+        String string = "Código: " + codigo +
+                "\nNome: " + nome +
+                "\nQuantidade: " + quantidade +
+                "\nPreço: " + preco;
+        return string;
+    }
+
     public String getCodigo() {
         return codigo;
     }

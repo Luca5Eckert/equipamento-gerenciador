@@ -43,6 +43,7 @@ public class MenuAdicionarEquipamento extends Menu<EquipamentoAdicionarRequest>{
     @Override
     public void executarAcao() {
         estoqueController.cadastrarEquipamento(getResposta());
+        System.out.println("Adicionado com sucesso");
     }
 
     @Override

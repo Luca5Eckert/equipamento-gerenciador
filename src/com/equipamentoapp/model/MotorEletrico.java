@@ -11,6 +11,13 @@ public class MotorEletrico extends Equipamento {
         this.potencia = potencia;
     }
 
+    @Override
+    public String toString() {
+        String string = super.toString();
+        string = string + "\nPotencia: " + potencia;
+        return string;
+    }
+
     public double getPotencia() {
         return potencia;
     }

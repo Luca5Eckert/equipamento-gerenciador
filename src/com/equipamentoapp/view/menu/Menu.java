@@ -17,7 +17,7 @@ public abstract class Menu<T> {
 
     public abstract void executarAcao();
 
-    public abstract Menu proximoMenu();
+    public abstract Menu<?> proximoMenu();
 
 
 }

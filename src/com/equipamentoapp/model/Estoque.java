@@ -16,7 +16,7 @@ public class Estoque {
         equipamentos.get(tipoEquipamento).put( equipamento.getCodigo(), equipamento);
     }
     
-    public void apagarEquipamento(String codigo, TipoEquipamento tipoEquipamento){
+    public void removerEquipamento(String codigo, TipoEquipamento tipoEquipamento){
         if(!existeListaPorTipo(tipoEquipamento)){
             throw new EstoqueException("O tipo não possui equipamentos");
         }
@@ -26,7 +26,7 @@ public class Estoque {
         equipamentos.get(tipoEquipamento).remove(codigo);
     }
 
-    public void apagarEquipamento(String codigo){
+    public void removerEquipamento(String codigo){
         for(Map.Entry<TipoEquipamento, Map<String, Equipamento>> entrada : equipamentos.entrySet()){
             entrada.getValue().remove(codigo);
         }

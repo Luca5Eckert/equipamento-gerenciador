@@ -1,5 +1,7 @@
 package com.equipamentoapp.model;
 
+import com.equipamentoapp.model.enums.TipoEquipamento;
+
 public class MotorEletrico extends Equipamento {
 
     private double potencia;
@@ -15,5 +17,10 @@ public class MotorEletrico extends Equipamento {
 
     public void setPotencia(double potencia) {
         this.potencia = potencia;
+    }
+
+    @Override
+    public TipoEquipamento pegarTipo() {
+        return TipoEquipamento.MOTOR_ELETRICO;
     }
 }

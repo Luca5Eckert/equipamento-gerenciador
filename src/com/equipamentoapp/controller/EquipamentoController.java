@@ -6,5 +6,7 @@ public class EquipamentoController {
 
     private final EstoqueService estoqueService;
 
-    public EstoqueService estoqueService;
+    public EquipamentoController(EstoqueService estoqueService){
+        this.estoqueService = estoqueService;
+    }
 }

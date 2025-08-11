@@ -1,4 +1,4 @@
-package model;
+package com.equipamentoapp.model;
 
 public class MotorEletrico extends Equipamento {
 

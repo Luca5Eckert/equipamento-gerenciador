@@ -1,7 +1,7 @@
 package com.equipamentoapp.view.menu;
 
 import com.equipamentoapp.dto.EquipamentoRequest;
-import com.equipamentoapp.infra.Leitor;
+import com.equipamentoapp.view.Leitor;
 
 public class MenuPesquisarEquipamento extends Menu<EquipamentoRequest>{
 

@@ -1,6 +1,6 @@
 package com.equipamentoapp.view.menu;
 
-import com.equipamentoapp.infra.Leitor;
+import com.equipamentoapp.view.Leitor;
 
 public abstract class Menu<T> {
     private T resposta;

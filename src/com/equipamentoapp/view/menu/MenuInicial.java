@@ -1,7 +1,10 @@
 package com.equipamentoapp.view.menu;
 
+import com.equipamentoapp.controller.EstoqueController;
 import com.equipamentoapp.exception.ViewException;
-import com.equipamentoapp.infra.Leitor;
+import com.equipamentoapp.view.Leitor;
+import com.equipamentoapp.model.Estoque;
+import com.equipamentoapp.service.EstoqueServiceImpl;
 
 public class MenuInicial extends Menu<String>{
 
@@ -26,7 +29,7 @@ public class MenuInicial extends Menu<String>{
     public void executarAcao() {
         System.out.println("Indo ao próximo menu");
         switch(getResposta()){
-            case "1" -> proximoMenu = new MenuAdicionarEquipamento();
+            case "1" -> proximoMenu = new MenuAdicionarEquipamento(new EstoqueController(new EstoqueServiceImpl(new Estoque())));
             case "2" -> proximoMenu = new MenuPesquisarEquipamento();
             default -> throw new ViewException("Valor digitado não possui correspondencia");
         }

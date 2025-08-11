@@ -1,6 +1,6 @@
 package com.equipamentoapp;
 
-import com.equipamentoapp.infra.Leitor;
+import com.equipamentoapp.view.Leitor;
 import com.equipamentoapp.view.MenuManager;
 import com.equipamentoapp.view.MenuProvider;
 import com.equipamentoapp.view.menu.MenuInicial;

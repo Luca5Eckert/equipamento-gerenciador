@@ -1,6 +1,5 @@
 package com.equipamentoapp.view;
 
-import com.equipamentoapp.infra.Leitor;
 import com.equipamentoapp.view.menu.Menu;
 
 public class MenuProvider {

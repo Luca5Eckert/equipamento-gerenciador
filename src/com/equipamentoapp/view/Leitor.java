@@ -1,4 +1,4 @@
-package com.equipamentoapp.infra;
+package com.equipamentoapp.view;
 
 import java.util.Scanner;
 
@@ -17,12 +17,26 @@ public class Leitor {
 
     public int lerNumero(){
         try{
-            return scanner.nextInt();
+            int numero = scanner.nextInt();
+            scanner.nextLine();
+            return numero;
         } catch (RuntimeException e) {
             tratarErro(e);
             return lerNumero();
         }
     }
+
+    public double lerNumeroDouble(){
+        try{
+            double numero = scanner.nextDouble();
+            scanner.nextLine();
+            return numero;
+        } catch (RuntimeException e) {
+            tratarErro(e);
+            return lerNumeroDouble();
+        }
+    }
+
 
     private void tratarErro(RuntimeException re){
         System.out.println("Algum erro aconteceu ao ler a linha");

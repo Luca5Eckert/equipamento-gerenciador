@@ -42,5 +42,7 @@ public class EstoqueController {
     }
 
 
-
+    public void visualizarEquipamento(EquipamentoResponse equipamentoResponse) {
+        estoqueService.visualizarEquipamento(equipamentoResponse.codigo());
+    }
 }

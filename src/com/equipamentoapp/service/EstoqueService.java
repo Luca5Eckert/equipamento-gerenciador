@@ -20,4 +20,6 @@ public interface EstoqueService {
     void removerPorCodigo(String codigo);
 
     void alterarEstoque(EquipamentoRequest equipamentoRequest, int diferenca);
+
+    void visualizarEquipamento(String codigo);
 }

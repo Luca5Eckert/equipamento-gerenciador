@@ -69,4 +69,9 @@ public class EstoqueServiceImpl implements EstoqueService {
         Equipamento equipamento = estoque.pegarEquipamento(equipamentoRequest.codigo());
         equipamento.alterarQuantidade(diferenca);
     }
+
+    @Override
+    public void visualizarEquipamento(String codigo) {
+        System.out.println(listarPorCodigo(codigo));
+    }
 }

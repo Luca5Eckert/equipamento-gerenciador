@@ -17,7 +17,8 @@ public class MenuInicial extends Menu<String>{
         System.out.println("==========================================");
         System.out.println(" 1- Adicionar Equipamento");
         System.out.println(" 2- Pesquisar Equipamento");
-        System.out.println(" 3- Listar Equipamentos\n");
+        System.out.println(" 3- Listar Equipamentos");
+        System.out.println(" 4- Sair \n");
         System.out.println(" * Para deletar ou modificar é preciso ");
         System.out.println(" primeiro pesquisar");
         System.out.println("==========================================");
@@ -27,10 +28,11 @@ public class MenuInicial extends Menu<String>{
 
     @Override
     public void executarAcao() {
-        System.out.println("Indo ao próximo menu");
+        EstoqueController estoqueController = new EstoqueController(new EstoqueServiceImpl(new Estoque()));
         switch(getResposta()){
-            case "1" -> proximoMenu = new MenuAdicionarEquipamento(new EstoqueController(new EstoqueServiceImpl(new Estoque())));
-            case "2" -> proximoMenu = new MenuPesquisarEquipamento();
+            case "1" -> proximoMenu = new MenuAdicionarEquipamento(estoqueController);
+            case "2" -> proximoMenu = new MenuPesquisarEquipamento(estoqueController);
+            case "4" -> proximoMenu = null;
             default -> throw new ViewException("Valor digitado não possui correspondencia");
         }
     }

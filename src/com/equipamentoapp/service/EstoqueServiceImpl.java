@@ -12,7 +12,6 @@ import com.equipamentoapp.model.enums.TipoEquipamento;
 import com.equipamentoapp.util.MapperUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class EstoqueServiceImpl implements EstoqueService {

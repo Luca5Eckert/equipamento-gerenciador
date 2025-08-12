@@ -39,6 +39,7 @@ public class Leitor {
 
 
     private void tratarErro(RuntimeException re){
+        scanner.nextLine();
         System.out.println("Algum erro aconteceu ao ler a linha");
         System.out.println("Tente novamente");
     }

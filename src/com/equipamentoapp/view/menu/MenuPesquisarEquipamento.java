@@ -30,7 +30,6 @@ public class MenuPesquisarEquipamento extends Menu<EquipamentoRequest>{
 
     @Override
     public void executarAcao() {
-        switch ()
         EquipamentoResponse equipamentoResponse = estoqueController.listarPorCodigo(getResposta().codigo());
         proximoMenu = new MenuVisualizadorEquipamento(estoqueController, equipamentoResponse);
     }

@@ -29,6 +29,7 @@ public class Estoque {
     public void removerEquipamento(String codigo){
         for(Map.Entry<TipoEquipamento, Map<String, Equipamento>> entrada : equipamentos.entrySet()){
             entrada.getValue().remove(codigo);
+            return;
         }
         throw new EstoqueException("Não foi possível achar o equipamento");
     }

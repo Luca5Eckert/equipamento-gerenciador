@@ -47,12 +47,14 @@ public class MenuVisualizadorEquipamento extends Menu<String>{
         System.out.println(" Quantidade a remover: ");
         int remover = leitor.lerNumero();
         estoqueController.alterarEstoque(new EquipamentoRequest(equipamentoResponse.codigo()), -remover);
+        proximoMenu = this;
     }
 
     private void adicionarUnidades() {
         System.out.println(" Quantidade a adicionar: ");
         int adicionar = leitor.lerNumero();
         estoqueController.alterarEstoque(new EquipamentoRequest(equipamentoResponse.codigo()), adicionar);
+        proximoMenu = this;
     }
 
     private void removerEquipamento() {

@@ -71,6 +71,6 @@ public class EstoqueServiceImpl implements EstoqueService {
 
     @Override
     public void visualizarEquipamento(String codigo) {
-        System.out.println(listarPorCodigo(codigo));
+        System.out.println(estoque.pegarEquipamento(codigo));
     }
 }

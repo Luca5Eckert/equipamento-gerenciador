@@ -21,11 +21,10 @@ public abstract class Equipamento {
 
     @Override
     public String toString() {
-        String string = "Código: " + codigo +
+        return "Código: " + codigo +
                 "\nNome: " + nome +
                 "\nQuantidade: " + quantidade +
                 "\nPreço: " + preco;
-        return string;
     }
 
     public String getCodigo() {

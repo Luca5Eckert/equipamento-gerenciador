@@ -30,6 +30,10 @@ public class MenuPesquisarEquipamento extends Menu<EquipamentoRequest>{
 
     @Override
     public void executarAcao() {
+        if(getResposta().codigo().trim().equalsIgnoreCase("S")){
+            proximoMenu = new MenuInicial();
+            return;
+        }
         EquipamentoResponse equipamentoResponse = estoqueController.listarPorCodigo(getResposta().codigo());
         proximoMenu = new MenuVisualizadorEquipamento(estoqueController, equipamentoResponse);
     }

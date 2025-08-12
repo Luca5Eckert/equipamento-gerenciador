@@ -1,38 +1,86 @@
 package com.equipamentoapp.view.menu;
 
+import com.equipamentoapp.controller.EstoqueController;
+import com.equipamentoapp.dto.EquipamentoResponse;
 import com.equipamentoapp.model.enums.TipoEquipamento;
 import com.equipamentoapp.view.Leitor;
 
-public class MenuListarEquipamentos extends Menu<String>{
+import java.util.ArrayList;
+import java.util.List;
 
+public class MenuListarEquipamentos extends Menu<TipoEquipamento[]>{
+
+    private final EstoqueController estoqueController;
+
+    private Menu<?> proximoMenu;
+
+    private Leitor leitor;
+
+    public MenuListarEquipamentos(EstoqueController estoqueController) {
+        this.estoqueController = estoqueController;
+    }
 
     @Override
     public void chamarMenu(Leitor leitor) {
+        this.leitor = leitor;
+
         System.out.println("==========================================");
         System.out.println("            LISTAR EQUIPAMENTOS           ");
         System.out.println("==========================================");
+        System.out.println(" S - SAIR ");
+        System.out.println("------------------------------------------");
         TipoEquipamento[] tipoEquipamentos = selecionarTipoEspecifico(leitor);
+        setResposta(tipoEquipamentos);
+
+
+
+    }
+
+    private void listarEquipamentos(List<EquipamentoResponse> listaUsuarios) {
+        System.out.println("====================================");
+        System.out.println(" EQUIPAMENTOS: ");
+        listaUsuarios.forEach(System.out::println);
     }
 
     private TipoEquipamento[] selecionarTipoEspecifico(Leitor leitor) {
         System.out.println(" T- Todos os tipos ");
         System.out.println(" Ou selecionar tipo especifico:");
         TipoEquipamento.listarTodos();
-        String opcao = leitor.lerLinha();
+        String opcao = leitor.lerLinha().toUpperCase().trim();
 
         return switch(opcao){
             case "T" -> TipoEquipamento.values();
+            case "S" -> null;
             default -> new TipoEquipamento[]{TipoEquipamento.values()[Integer.parseInt(opcao)]};
         };
     }
 
     @Override
     public void executarAcao() {
+        if(getResposta() == null){
+            proximoMenu = new MenuInicial();
+            return;
+        }
+
+        List<EquipamentoResponse> listaUsuarios = new ArrayList<>();
+        for(TipoEquipamento tipo : getResposta()){
+            listaUsuarios.addAll(estoqueController.listarEquipamentosPorTipo(tipo));
+        }
+
+        listarEquipamentos(listaUsuarios);
+
+        String inputFinal = leitor.lerLinha().trim();
+
+        if(inputFinal.equalsIgnoreCase("S")){
+            proximoMenu = new MenuInicial();
+            return;
+        }
+        proximoMenu = this;
 
     }
 
     @Override
     public Menu<?> proximoMenu() {
-        return null;
+        return proximoMenu;
     }
 }

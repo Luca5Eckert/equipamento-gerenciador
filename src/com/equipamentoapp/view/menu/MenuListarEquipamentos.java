@@ -63,8 +63,10 @@ public class MenuListarEquipamentos extends Menu<TipoEquipamento[]>{
         }
 
         List<EquipamentoResponse> listaUsuarios = new ArrayList<>();
-        for(TipoEquipamento tipo : getResposta()){
-            listaUsuarios.addAll(estoqueController.listarEquipamentosPorTipo(tipo));
+        if(getResposta().length == TipoEquipamento.values().length){
+            listaUsuarios.addAll(estoqueController.listarEquipamentos());
+        } else {
+            listaUsuarios.addAll(estoqueController.listarEquipamentosPorTipo(getResposta()[0]));
         }
 
         listarEquipamentos(listaUsuarios);

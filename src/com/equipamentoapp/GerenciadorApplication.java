@@ -5,7 +5,7 @@ import com.equipamentoapp.view.MenuManager;
 import com.equipamentoapp.view.MenuProvider;
 import com.equipamentoapp.view.menu.MenuInicial;
 
-public class Main {
+public class GerenciadorApplication {
     public static void main(String[] args) {
 
         try {

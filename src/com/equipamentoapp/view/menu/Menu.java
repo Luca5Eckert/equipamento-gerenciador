@@ -5,11 +5,11 @@ import com.equipamentoapp.view.Leitor;
 public abstract class Menu<T> {
     private T resposta;
 
-    public T getResposta(){
+    T getResposta(){
         return resposta;
     }
 
-    public void setResposta(T resposta){
+    void setResposta(T resposta){
         this.resposta = resposta;
     }
 

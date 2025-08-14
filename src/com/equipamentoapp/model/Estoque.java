@@ -117,8 +117,11 @@ public class Estoque {
 
         equipamentoMaiorPreco = equipamentos.stream().max(Comparator.comparingInt(Equipamento::getQuantidade)).orElseThrow(() -> new EstoqueException("Estoque vazio"));
     }
-    
-    
-    
-    
+
+
+    public void alterarEstoqueQuantidade(int diferenca, Equipamento equipamento) {
+        quantidadeEstoque += diferenca;
+        verificarEquipamentoAntesAdicionar(equipamento);
+        verificarEquipamentoAntesApagar(equipamento.getCodigo());
+    }
 }

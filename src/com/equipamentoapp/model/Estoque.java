@@ -12,7 +12,19 @@ public class Estoque {
     private static int quantidadeEstoque = 0;
     private static Equipamento equipamentoMaiorEstoque;
     private static Equipamento equipamentoMaiorPreco;
-    
+
+    public static int getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public static Equipamento getEquipamentoMaiorEstoque() {
+        return equipamentoMaiorEstoque;
+    }
+
+    public static Equipamento getEquipamentoMaiorPreco() {
+        return equipamentoMaiorPreco;
+    }
+
     public void adicionarEsquipamento(TipoEquipamento tipoEquipamento, Equipamento equipamento){
         if(!existeListaPorTipo(tipoEquipamento)){
             equipamentos.put(tipoEquipamento, new HashMap<>());

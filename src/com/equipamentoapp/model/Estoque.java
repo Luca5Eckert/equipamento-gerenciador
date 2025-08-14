@@ -17,14 +17,10 @@ public class Estoque {
         if(!existeListaPorTipo(tipoEquipamento)){
             equipamentos.put(tipoEquipamento, new HashMap<>());
         }
+        verificarEquipamentoAntesAdicionar(equipamento);
+
         equipamentos.get(tipoEquipamento).put( equipamento.getCodigo(), equipamento);
 
-        if(equipamento.getPreco() > equipamentoMaiorPreco.getPreco()){
-            equipamentoMaiorPreco = equipamento;
-        }
-        if(equipamento.getQuantidade() > equipamentoMaiorEstoque.getQuantidade()){
-            equipamentoMaiorEstoque = equipamento;
-        }
 
     }
     
@@ -37,12 +33,26 @@ public class Estoque {
         }
 
         verificarEquipamentoAntesApagar(codigo);
-        
+
         equipamentos.get(tipoEquipamento).remove(codigo);
     }
 
+    private void verificarEquipamentoAntesAdicionar(Equipamento equipamento){
+        quantidadeEstoque += equipamento.getQuantidade();
+
+        if(equipamentoMaiorPreco == null || equipamento.getPreco() > equipamentoMaiorPreco.getPreco()){
+            equipamentoMaiorPreco = equipamento;
+        }
+        if(equipamentoMaiorEstoque == null || equipamento.getQuantidade() > equipamentoMaiorEstoque.getQuantidade()){
+            equipamentoMaiorEstoque = equipamento;
+        }
+    }
+
+
     private void verificarEquipamentoAntesApagar(String codigo) {
         Equipamento equipamento = pegarEquipamento(codigo);
+
+        quantidadeEstoque -= quantidadeEstoque;
 
         if(equipamento == equipamentoMaiorEstoque){
             definirEquipamentoComMaiorEstoque();

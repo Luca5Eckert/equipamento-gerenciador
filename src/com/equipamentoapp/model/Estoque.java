@@ -8,12 +8,24 @@ import java.util.*;
 public class Estoque {
     
     private static final Map<TipoEquipamento, Map<String, Equipamento>> equipamentos = new HashMap<>();
+
+    private static int quantidadeEstoque = 0;
+    private static Equipamento equipamentoMaiorEstoque;
+    private static Equipamento equipamentoMaiorPreco;
     
     public void adicionarEsquipamento(TipoEquipamento tipoEquipamento, Equipamento equipamento){
         if(!existeListaPorTipo(tipoEquipamento)){
             equipamentos.put(tipoEquipamento, new HashMap<>());
         }
         equipamentos.get(tipoEquipamento).put( equipamento.getCodigo(), equipamento);
+
+        if(equipamento.getPreco() > equipamentoMaiorPreco.getPreco()){
+            equipamentoMaiorPreco = equipamento;
+        }
+        if(equipamento.getQuantidade() > equipamentoMaiorEstoque.getQuantidade()){
+            equipamentoMaiorEstoque = equipamento;
+        }
+
     }
     
     public void removerEquipamento(String codigo, TipoEquipamento tipoEquipamento){
@@ -23,11 +35,27 @@ public class Estoque {
         if(equipamentos.get(tipoEquipamento).containsKey(codigo)){
             throw new EstoqueException("Não foi possível achar o equipamento");
         }
+
+        verificarEquipamentoAntesApagar(codigo);
+        
         equipamentos.get(tipoEquipamento).remove(codigo);
+    }
+
+    private void verificarEquipamentoAntesApagar(String codigo) {
+        Equipamento equipamento = pegarEquipamento(codigo);
+
+        if(equipamento == equipamentoMaiorEstoque){
+            definirEquipamentoComMaiorEstoque();
+        }
+        if(equipamento == equipamentoMaiorPreco){
+            definirEquipamentoMaisCaro();
+        }
+
     }
 
     public void removerEquipamento(String codigo){
         for(Map.Entry<TipoEquipamento, Map<String, Equipamento>> entrada : equipamentos.entrySet()){
+            verificarEquipamentoAntesApagar(codigo);
             entrada.getValue().remove(codigo);
             return;
         }
@@ -66,6 +94,20 @@ public class Estoque {
     private boolean existeListaPorTipo(TipoEquipamento tipoEquipamento){
         return equipamentos.containsKey(tipoEquipamento);
     }
+
+    public void definirEquipamentoMaisCaro(){
+        List<Equipamento> equipamentos = pegarEquipamentos();
+
+        equipamentoMaiorPreco = equipamentos.stream().max(Comparator.comparingDouble(Equipamento::getPreco)).orElseThrow(() -> new EstoqueException("Estoque vazio"));
+        
+    }
+    
+    public void definirEquipamentoComMaiorEstoque(){
+        List<Equipamento> equipamentos = pegarEquipamentos();
+
+        equipamentoMaiorPreco = equipamentos.stream().max(Comparator.comparingInt(Equipamento::getQuantidade)).orElseThrow(() -> new EstoqueException("Estoque vazio"));
+    }
+    
     
     
     

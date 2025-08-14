@@ -73,4 +73,24 @@ public class EstoqueServiceImpl implements EstoqueService {
     public void visualizarEquipamento(String codigo) {
         System.out.println(estoque.pegarEquipamento(codigo));
     }
+
+    @Override
+    public int pegarQuantidadeEmEstoque() {
+        return 0;
+    }
+
+    @Override
+    public EquipamentoResponse pegarEquipamentoComMaiorPreco() {
+        return null;
+    }
+
+    @Override
+    public EquipamentoResponse pegarEquipamentoComMaiorQuantidade() {
+        return null;
+    }
+
+    @Override
+    public List<EquipamentoResponse> pegarEquipamentosComMenorQuantidade() {
+        return List.of();
+    }
 }

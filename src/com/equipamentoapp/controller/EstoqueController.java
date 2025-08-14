@@ -3,6 +3,7 @@ package com.equipamentoapp.controller;
 import com.equipamentoapp.dto.EquipamentoAdicionarRequest;
 import com.equipamentoapp.dto.EquipamentoRequest;
 import com.equipamentoapp.dto.EquipamentoResponse;
+import com.equipamentoapp.dto.RelatorioRequest;
 import com.equipamentoapp.model.enums.TipoEquipamento;
 import com.equipamentoapp.service.EstoqueService;
 
@@ -44,5 +45,14 @@ public class EstoqueController {
 
     public void visualizarEquipamento(EquipamentoResponse equipamentoResponse) {
         estoqueService.visualizarEquipamento(equipamentoResponse.codigo());
+    }
+
+    public RelatorioRequest pegarRelatorioEstoque(){
+        int quantidadeEstoque = estoqueService.pegarQuantidadeEmEstoque();
+        EquipamentoResponse equipamentoMaiorPreco = estoqueService.pegarEquipamentoComMaiorPreco();
+        EquipamentoResponse equipamentoMaiorQuantidade = estoqueService.pegarEquipamentoComMaiorQuantidade();
+        List<EquipamentoResponse> equipamentoMenoresPrecos = estoqueService.pegarEquipamentosComMenorQuantidade();
+
+        return new RelatorioRequest(quantidadeEstoque, equipamentoMaiorPreco, equipamentoMaiorQuantidade, equipamentoMenoresPrecos);
     }
 }

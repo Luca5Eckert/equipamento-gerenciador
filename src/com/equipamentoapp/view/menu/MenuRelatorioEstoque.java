@@ -13,7 +13,13 @@ public class MenuRelatorioEstoque extends Menu<String>{
 
     @Override
     public void chamarMenu(Leitor leitor) {
+        int quantidadeEstoque = estoqueController.
 
+        System.out.println("==========================================");
+        System.out.println("            ESTOQUE EQUIPAMENTO           ");
+        System.out.println("==========================================");
+        System.out.println(" Quantidade no estoque: ");
+        System.out.println();
     }
 
     @Override

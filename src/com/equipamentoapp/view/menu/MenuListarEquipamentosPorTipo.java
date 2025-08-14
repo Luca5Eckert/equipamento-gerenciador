@@ -8,7 +8,7 @@ import com.equipamentoapp.view.Leitor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuListarEquipamentos extends Menu<TipoEquipamento[]>{
+public class MenuListarEquipamentosPorTipo extends Menu<TipoEquipamento[]>{
 
     private final EstoqueController estoqueController;
 
@@ -16,7 +16,7 @@ public class MenuListarEquipamentos extends Menu<TipoEquipamento[]>{
 
     private Leitor leitor;
 
-    public MenuListarEquipamentos(EstoqueController estoqueController) {
+    public MenuListarEquipamentosPorTipo(EstoqueController estoqueController) {
         this.estoqueController = estoqueController;
     }
 

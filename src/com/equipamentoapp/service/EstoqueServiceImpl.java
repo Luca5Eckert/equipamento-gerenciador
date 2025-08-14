@@ -67,7 +67,7 @@ public class EstoqueServiceImpl implements EstoqueService {
     public void alterarEstoque(EquipamentoRequest equipamentoRequest, int diferenca) {
         Equipamento equipamento = estoque.pegarEquipamento(equipamentoRequest.codigo());
         equipamento.alterarQuantidade(diferenca);
-        estoque.alterarEstoqueQuantidade(diferenca);
+        estoque.alterarEstoqueQuantidade(diferenca, equipamento);
     }
 
     @Override
@@ -77,21 +77,30 @@ public class EstoqueServiceImpl implements EstoqueService {
 
     @Override
     public int pegarQuantidadeEmEstoque() {
-        return 0;
+        return Estoque.getQuantidadeEstoque();
     }
 
     @Override
     public EquipamentoResponse pegarEquipamentoComMaiorPreco() {
-        return null;
+        EquipamentoResponseMapper equipamentoResponseMapper = MapperUtils.toInstanceEquipamentoResponseMapper();
+        return equipamentoResponseMapper.toResponse(Estoque.getEquipamentoMaiorPreco());
     }
 
     @Override
     public EquipamentoResponse pegarEquipamentoComMaiorQuantidade() {
-        return null;
+        EquipamentoResponseMapper equipamentoResponseMapper = MapperUtils.toInstanceEquipamentoResponseMapper();
+        return equipamentoResponseMapper.toResponse(Estoque.getEquipamentoMaiorPreco());
     }
 
     @Override
     public List<EquipamentoResponse> pegarEquipamentosComMenorQuantidade() {
-        return List.of();
+        EquipamentoResponseMapper equipamentoResponseMapper = MapperUtils.toInstanceEquipamentoResponseMapper();
+        var listaEntidades = estoque.pegarEquipamentosComMenorQuantidades();
+
+        List<EquipamentoResponse> equipamentoResponseList = new ArrayList<>();
+        listaEntidades.forEach(item -> equipamentoResponseList.add(equipamentoResponseMapper.toResponse(item)));
+        return equipamentoResponseList;
     }
+
+
 }

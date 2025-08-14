@@ -1,9 +1,11 @@
 package com.equipamentoapp.model;
 
+import com.equipamentoapp.dto.EquipamentoResponse;
 import com.equipamentoapp.exception.EstoqueException;
 import com.equipamentoapp.model.enums.TipoEquipamento;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Estoque {
     
@@ -135,5 +137,10 @@ public class Estoque {
         quantidadeEstoque += diferenca;
         verificarEquipamentoAntesAdicionar(equipamento);
         verificarEquipamentoAntesApagar(equipamento.getCodigo());
+    }
+
+    public List<Equipamento> pegarEquipamentosComMenorQuantidades() {
+        List<Equipamento> listEquipamentos = pegarEquipamentos();
+        return listEquipamentos.stream().filter(equip -> equip.getQuantidade() < 5).collect(Collectors.toList());
     }
 }

@@ -1,6 +1,6 @@
 package com.equipamentoapp.exception;
 
-public class EquipamentoException extends RuntimeException {
+public class EquipamentoException extends SystemException {
     public EquipamentoException(String message) {
         super(message);
     }

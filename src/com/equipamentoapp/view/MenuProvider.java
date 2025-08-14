@@ -1,5 +1,6 @@
 package com.equipamentoapp.view;
 
+import com.equipamentoapp.exception.GlobalExceptionHandler;
 import com.equipamentoapp.view.menu.Menu;
 
 public class MenuProvider {
@@ -19,7 +20,7 @@ public class MenuProvider {
             menu.executarAcao();
             menu = menu.proximoMenu();
         } catch ( RuntimeException runtimeException){
-            System.out.println(runtimeException.getMessage());
+            System.out.println(GlobalExceptionHandler.tratarExceção(runtimeException));
         }
     }
 

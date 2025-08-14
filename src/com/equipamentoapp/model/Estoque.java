@@ -20,10 +20,16 @@ public class Estoque {
     }
 
     public static Equipamento getEquipamentoMaiorEstoque() {
+        if(equipamentoMaiorEstoque == null){
+            throw new EstoqueException("Estoque vazio");
+        }
         return equipamentoMaiorEstoque;
     }
 
     public static Equipamento getEquipamentoMaiorPreco() {
+        if(equipamentoMaiorPreco == null){
+            throw new EstoqueException("Estoque vazio");
+        }
         return equipamentoMaiorPreco;
     }
 

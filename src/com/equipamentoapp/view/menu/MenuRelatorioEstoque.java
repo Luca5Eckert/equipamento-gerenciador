@@ -16,20 +16,28 @@ public class MenuRelatorioEstoque extends Menu<String>{
 
     @Override
     public void chamarMenu(Leitor leitor) {
-        RelatorioRequest relatorioRequest = estoqueController.pegarRelatorioEstoque();
-
         System.out.println("==========================================");
         System.out.println("            ESTOQUE EQUIPAMENTO           ");
         System.out.println("==========================================");
-        System.out.println(" Quantidade no estoque: " + relatorioRequest.quantidadeEstoque() );
-        System.out.println(" Equipamento com maior preço: ");
-        System.out.print(" " + relatorioRequest.equipamentoMaiorPreco().codigo() + " - " + relatorioRequest.equipamentoMaiorPreco().preco());
+        
+        RelatorioRequest relatorioRequest = null;
+        try{
+            relatorioRequest = estoqueController.pegarRelatorioEstoque();
 
-        System.out.println(" Equipamento com maior quantidade: ");
-        System.out.println(" " + relatorioRequest.equipamentoMaiorQuantidade().codigo() + " - " + relatorioRequest.equipamentoMaiorQuantidade().quantidade());
+            System.out.println(" Quantidade no estoque: " + relatorioRequest.quantidadeEstoque() );
+            System.out.println(" Equipamento com maior preço: ");
+            System.out.println(" " + relatorioRequest.equipamentoMaiorPreco().codigo() + " - " + relatorioRequest.equipamentoMaiorPreco().preco());
 
-        System.out.println(" Equipamentos com menos de 5 unidades: ");
-        relatorioRequest.equipamentosMenorPreco().forEach(e -> System.out.println(" " + e.codigo() + " - "  + e.quantidade()));
+            System.out.println(" Equipamento com maior quantidade: ");
+            System.out.println(" " + relatorioRequest.equipamentoMaiorQuantidade().codigo() + " - " + relatorioRequest.equipamentoMaiorQuantidade().quantidade());
+
+            System.out.println(" Equipamentos com menos de 5 unidades: ");
+            relatorioRequest.equipamentosMenorPreco().forEach(e -> System.out.println(" " + e.codigo() + " - "  + e.quantidade()));
+
+        } catch (RuntimeException e) {
+            System.out.println( e.getMessage());
+        }
+
 
         System.out.println("------------------------------------------");
         System.out.println(" S - Sair");
@@ -43,7 +51,7 @@ public class MenuRelatorioEstoque extends Menu<String>{
         proximoMenu = switch(getResposta().toUpperCase()){
             case "S" -> new MenuInicial();
             case "A" -> this;
-            default -> this;
+            default -> proximoMenu;
         };
     }
 

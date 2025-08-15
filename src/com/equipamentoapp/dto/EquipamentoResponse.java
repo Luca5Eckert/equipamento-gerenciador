@@ -4,7 +4,7 @@ public record EquipamentoResponse(String codigo, String nome, int quantidade, do
 
     @Override
     public String toString() {
-        return " " + codigo + " - " + nome;
+        return  "Código: " + codigo + " - Nome: " + nome;
     }
 
 

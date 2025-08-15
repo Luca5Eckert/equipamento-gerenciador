@@ -44,7 +44,11 @@ public class MenuListarEquipamentosPorNome extends Menu<String> {
             System.out.println(" Estoque Vazio ");
             return;
         }
-        listaEquipamentos.forEach(System.out::println);
+        listaEquipamentos.forEach(estoque -> {
+            System.out.println("------------------------------------");
+            System.out.println(estoque);
+            System.out.println("------------------------------------");
+        });
     }
 
     @Override

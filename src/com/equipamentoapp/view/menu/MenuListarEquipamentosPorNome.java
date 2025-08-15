@@ -41,7 +41,7 @@ public class MenuListarEquipamentosPorNome extends Menu<String> {
     private void listarEquipamentos(List<EquipamentoResponse> listaEquipamentos) {
         System.out.println(" EQUIPAMENTOS: ");
         if(listaEquipamentos.isEmpty()){
-            System.out.println(" Estoque Vazio ");
+            System.out.println(" Sem correspondência ");
             return;
         }
         listaEquipamentos.forEach(estoque -> {

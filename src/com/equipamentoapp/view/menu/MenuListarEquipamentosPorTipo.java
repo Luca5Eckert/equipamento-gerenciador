@@ -40,7 +40,7 @@ public class MenuListarEquipamentosPorTipo extends Menu<TipoEquipamento[]>{
         System.out.println("====================================");
         System.out.println(" EQUIPAMENTOS: ");
         if(listaEquipamentos.isEmpty()){
-            System.out.println(" Estoque Vazio ");
+            System.out.println(" Sem correspondência ");
             return;
         }
         listaEquipamentos.forEach(estoque -> {

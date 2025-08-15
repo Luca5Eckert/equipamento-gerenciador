@@ -25,7 +25,7 @@ public class MenuRelatorioEstoque extends Menu<String>{
             relatorioRequest = estoqueController.pegarRelatorioEstoque();
 
             System.out.println(" Quantidade no estoque: " + relatorioRequest.quantidadeEstoque() );
-            System.out.println(" Equipamento com maior preço: ");
+            System.out.println("\n Equipamento com maior preço: ");
             System.out.println(" " + relatorioRequest.equipamentoMaiorPreco().codigo() + " - " + relatorioRequest.equipamentoMaiorPreco().preco());
 
             System.out.println("\n Equipamento com maior quantidade: ");

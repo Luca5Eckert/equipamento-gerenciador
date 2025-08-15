@@ -29,7 +29,7 @@ public class MenuRelatorioEstoque extends Menu<String>{
             System.out.println(" Código: " + relatorioRequest.equipamentoMaiorPreco().codigo() + " - Preço: " + relatorioRequest.equipamentoMaiorPreco().preco());
 
             System.out.println("\n Equipamento com maior quantidade: ");
-            System.out.println(" Código: " + relatorioRequest.equipamentoMaiorQuantidade().codigo() + " - Preço: " + relatorioRequest.equipamentoMaiorQuantidade().quantidade());
+            System.out.println(" Código: " + relatorioRequest.equipamentoMaiorQuantidade().codigo() + " - Quantidade: " + relatorioRequest.equipamentoMaiorQuantidade().quantidade());
 
             System.out.println("\n Equipamentos com menos de 5 unidades: ");
             relatorioRequest.equipamentosMenorPreco().forEach(e -> System.out.println(" Código: " + e.codigo() + " - Quantidade:"  + e.quantidade()));

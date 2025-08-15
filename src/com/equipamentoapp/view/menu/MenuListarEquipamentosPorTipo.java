@@ -78,7 +78,8 @@ public class MenuListarEquipamentosPorTipo extends Menu<TipoEquipamento[]>{
         }
 
         listarEquipamentos(listaUsuarios);
-
+        System.out.println("S - Sair");
+        System.out.println("A - Atualizar");
         String inputFinal = leitor.lerLinha().trim();
 
         if(inputFinal.equalsIgnoreCase("S")){

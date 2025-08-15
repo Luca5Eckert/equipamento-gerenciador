@@ -55,4 +55,12 @@ public class EstoqueController {
 
         return new RelatorioRequest(quantidadeEstoque, equipamentoMaiorPreco, equipamentoMaiorQuantidade, equipamentoMenoresPrecos);
     }
+
+    public List<EquipamentoResponse> listarEquipamentosPorPreco(double precoDesejado) {
+        return estoqueService.listarEquipamentosPorPreco(precoDesejado);
+    }
+
+    public List<EquipamentoResponse> listarEquipamentosPorNome(String nomeDesejado) {
+        return estoqueService.listarEquipamentosPorNome(nomeDesejado);
+    }
 }

@@ -32,4 +32,7 @@ public interface EstoqueService {
 
     List<EquipamentoResponse> pegarEquipamentosComMenorQuantidade();
 
+    List<EquipamentoResponse> listarEquipamentosPorPreco(double precoDesejado);
+
+    List<EquipamentoResponse> listarEquipamentosPorNome(String nomeDesejado);
 }

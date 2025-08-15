@@ -102,5 +102,25 @@ public class EstoqueServiceImpl implements EstoqueService {
         return equipamentoResponseList;
     }
 
+    @Override
+    public List<EquipamentoResponse> listarEquipamentosPorPreco(double precoDesejado) {
+        EquipamentoResponseMapper equipamentoResponseMapper = MapperUtils.toInstanceEquipamentoResponseMapper();
+        var listaEntidades = estoque.listarEquipamentosPorPreco(precoDesejado);
+
+        List<EquipamentoResponse> equipamentoResponseList = new ArrayList<>();
+        listaEntidades.forEach(item -> equipamentoResponseList.add(equipamentoResponseMapper.toResponse(item)));
+        return equipamentoResponseList;
+    }
+
+    @Override
+    public List<EquipamentoResponse> listarEquipamentosPorNome(String nomeDesejado) {
+        EquipamentoResponseMapper equipamentoResponseMapper = MapperUtils.toInstanceEquipamentoResponseMapper();
+        var listaEntidades = estoque.listarEquipamentosPorNome(nomeDesejado);
+
+        List<EquipamentoResponse> equipamentoResponseList = new ArrayList<>();
+        listaEntidades.forEach(item -> equipamentoResponseList.add(equipamentoResponseMapper.toResponse(item)));
+        return equipamentoResponseList;
+    }
+
 
 }

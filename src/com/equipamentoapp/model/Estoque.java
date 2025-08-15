@@ -149,4 +149,30 @@ public class Estoque {
         List<Equipamento> listEquipamentos = pegarEquipamentos();
         return listEquipamentos.stream().filter(equip -> equip.getQuantidade() < 5).collect(Collectors.toList());
     }
+
+    public List<Equipamento> listarEquipamentosPorPreco(double precoDesejado) {
+        List<Equipamento> listaEquipamentos = new ArrayList<>();
+
+        for(Map.Entry<TipoEquipamento,  Map<String, Equipamento>> listas : equipamentos.entrySet()){
+            for(Map.Entry<String, Equipamento> entradas : listas.getValue().entrySet()){
+                if(precoDesejado == entradas.getValue().getPreco()){
+                    listaEquipamentos.add(entradas.getValue());
+                }
+            }
+        }
+        return listaEquipamentos;
+    }
+
+    public List<Equipamento> listarEquipamentosPorNome(String nomeDesejado) {
+        List<Equipamento> listaEquipamentos = new ArrayList<>();
+
+        for(Map.Entry<TipoEquipamento,  Map<String, Equipamento>> listas : equipamentos.entrySet()){
+            for(Map.Entry<String, Equipamento> entradas : listas.getValue().entrySet()){
+                if(entradas.getValue().getNome().contains(nomeDesejado)){
+                    listaEquipamentos.add(entradas.getValue());
+                }
+            }
+        }
+        return listaEquipamentos;
+    }
 }

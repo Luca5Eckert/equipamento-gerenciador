@@ -37,7 +37,8 @@ public class MenuInicial extends Menu<String>{
             case "2" -> proximoMenu = new MenuPesquisarEquipamento(estoqueController);
             case "3" -> proximoMenu = new MenuListarEquipamentosPorTipo(estoqueController);
             case "4" -> proximoMenu = new MenuRelatorioEstoque(estoqueController);
-            case "0" -> proximoMenu = null;
+            case "5" -> proximoMenu = new MenuListarEquipamentosPorNome(estoqueController);
+            case "0" -> proximoMenu = new MenuListarEquipamentosPorPreco(estoqueController);
             default -> throw new ViewException("Valor digitado não possui correspondencia");
         }
     }

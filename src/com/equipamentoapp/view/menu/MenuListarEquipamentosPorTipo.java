@@ -36,17 +36,21 @@ public class MenuListarEquipamentosPorTipo extends Menu<TipoEquipamento[]>{
 
     }
 
-    private void listarEquipamentos(List<EquipamentoResponse> listaUsuarios) {
+    private void listarEquipamentos(List<EquipamentoResponse> listaEquipamentos) {
         System.out.println("====================================");
         System.out.println(" EQUIPAMENTOS: ");
-        listaUsuarios.forEach(System.out::println);
+        if(listaEquipamentos.isEmpty()){
+            System.out.println(" Estoque Vazio ");
+            return;
+        }
+        listaEquipamentos.forEach(System.out::println);
     }
 
     private TipoEquipamento[] selecionarTipoEspecifico(Leitor leitor) {
         System.out.println(" T- Todos os tipos ");
-        System.out.println(" Ou selecionar tipo especifico:");
         TipoEquipamento.listarTodos();
         String opcao = leitor.lerLinha().toUpperCase().trim();
+        System.out.println("------------------------------------------");
 
         return switch(opcao){
             case "T" -> TipoEquipamento.values();

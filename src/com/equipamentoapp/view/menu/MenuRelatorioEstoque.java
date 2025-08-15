@@ -28,18 +28,18 @@ public class MenuRelatorioEstoque extends Menu<String>{
             System.out.println(" Equipamento com maior preço: ");
             System.out.println(" " + relatorioRequest.equipamentoMaiorPreco().codigo() + " - " + relatorioRequest.equipamentoMaiorPreco().preco());
 
-            System.out.println(" Equipamento com maior quantidade: ");
-            System.out.println(" " + relatorioRequest.equipamentoMaiorQuantidade().codigo() + " - " + relatorioRequest.equipamentoMaiorQuantidade().quantidade());
+            System.out.println("\n Equipamento com maior quantidade: ");
+            System.out.println(" Código: " + relatorioRequest.equipamentoMaiorQuantidade().codigo() + " - Preço: " + relatorioRequest.equipamentoMaiorQuantidade().quantidade());
 
-            System.out.println(" Equipamentos com menos de 5 unidades: ");
-            relatorioRequest.equipamentosMenorPreco().forEach(e -> System.out.println(" " + e.codigo() + " - "  + e.quantidade()));
+            System.out.println("\n Equipamentos com menos de 5 unidades: ");
+            relatorioRequest.equipamentosMenorPreco().forEach(e -> System.out.println(" Código: " + e.codigo() + " - Quantidade:"  + e.quantidade()));
 
         } catch (RuntimeException e) {
             System.out.println( e.getMessage());
         }
 
 
-        System.out.println("------------------------------------------");
+        System.out.println("\n------------------------------------------");
         System.out.println(" S - Sair");
         System.out.println(" A - Atualizar");
         System.out.println("==========================================");

@@ -33,7 +33,7 @@ public class MenuListarEquipamentosPorNome extends Menu<String> {
         System.out.println(" T- Tenter outro Nome");
         System.out.println("==========================================");
 
-        setResposta(leitor.lerLinha());
+        setResposta(leitor.lerLinha().trim());
 
 
     }
@@ -49,10 +49,10 @@ public class MenuListarEquipamentosPorNome extends Menu<String> {
 
     @Override
     public void executarAcao() {
-        proximoMenu = switch (getResposta()){
+        proximoMenu = switch (getResposta().toUpperCase()){
             case "S" -> new MenuInicial();
             case "T" -> this;
-            default -> proximoMenu;
+            default -> this;
         };
     }
 
